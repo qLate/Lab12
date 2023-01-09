@@ -11,12 +11,13 @@ public class Handler {
         this.quantity = quantity;
     }
 
-    public void process(int amount) {
+    public int process(int amount) {
         if (next != null)
-            next.process(amount % quantity);
+            return next.process(amount % quantity);
         else if (amount % quantity > 0) {
             throw new IllegalArgumentException();
         }
         System.out.println(quantity + " * " + amount / quantity);
+        return amount / quantity;
     }
 }
